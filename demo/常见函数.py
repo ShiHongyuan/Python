@@ -353,5 +353,7 @@ print(isinstance(iter([]), Iterator))  # True
 print(isinstance(iter('abc'), Iterator))  # True
 
 
-
-
+###############################  math
+import math
+# sum([1, 2, 3])
+# pow(-1, x//2)

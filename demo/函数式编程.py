@@ -55,7 +55,7 @@ def str2float(s):
         else:
             point = point * 10
             return f + n / point
-    return reduce(to_float, nums, 0.0)  # nums只有一个数的时候，默认为0.0
+    return reduce(to_float, nums, 0.0)  # 0.0始终作为nums的第一个元素，参与到reduce里
 
 # lambda函数：lambda ch: CHAR_TO_FLOAT[ch] 等同于：
 def fn(ch):
@@ -181,17 +181,3 @@ import functools
 # 本来 int(str, base=10)，默认按十进制转换
 int2 = functools.partial(int, base=2)
 print(int2('101010'))  # 42
-
-
-
-
-
-
-
-
-
-
-
-
-
-

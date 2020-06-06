@@ -95,6 +95,11 @@ print(str)  # rENHAILI XIANGYU
 # 字符串反转
 print('12345'[::-1])  # 54321
 
+
+############################# 字符数组
+bs = b'ABC'
+print(isinstance(bs, bytes))  # True
+
 ############################# 布尔值
 print(True)  # True
 print(False)  # False
@@ -345,7 +350,63 @@ print(s)  # {0.1, True, (1, 2), 'Apple', 'a', 123}
 
 
 
+#################################### 常量和枚举
+# 定义变量
+# 1. 第一种方式：变量名大写，但其实也是变量
+# 2. 第二种方式：枚举。
+from enum import Enum
+Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
 
+# value属性则是自动赋给成员的int常量，默认从1开始计数
+for name, member in Month.__members__.items():
+    print(name, '=>', member, ',', member.value)
+
+# Jan => Month.Jan , 1
+# Feb => Month.Feb , 2
+# Mar => Month.Mar , 3
+# Apr => Month.Apr , 4
+# May => Month.May , 5
+# Jun => Month.Jun , 6
+# Jul => Month.Jul , 7
+# Aug => Month.Aug , 8
+# Sep => Month.Sep , 9
+# Oct => Month.Oct , 10
+# Nov => Month.Nov , 11
+# Dec => Month.Dec , 12
+
+# 如果需要更精确地控制枚举类型，可以从Enum派生出自定义类：
+from enum import Enum, unique
+
+# @unique装饰器可以帮助我们检查保证没有重复值：
+@unique
+class Weekday(Enum):
+    Sun = 0 # Sun的value被设定为0
+    Mon = 1
+    Tue = 2
+    Wed = 3
+    Thu = 4
+    Fri = 5
+    Sat = 6
+
+# 既可以用成员名称引用枚举常量，又可以直接根据value的值获得枚举常量：
+day1 = Weekday.Mon
+print(day1)  # Weekday.Mon
+print(Weekday.Tue)  # Weekday.Tue
+print(Weekday['Tue'])  # Weekday.Tue
+print(Weekday(1))  # Weekday.Mon
+print(Weekday.Tue.value)  # 2
+print(day1 == Weekday.Mon)  # True
+print(day1 == Weekday.Tue)  # False
+print(day1 == Weekday(1))  # True
+for name, member in Weekday.__members__.items():
+     print(name, '=>', member)
+# Sun => Weekday.Sun
+# Mon => Weekday.Mon
+# Tue => Weekday.Tue
+# Wed => Weekday.Wed
+# Thu => Weekday.Thu
+# Fri => Weekday.Fri
+# Sat => Weekday.Sat
 
 
 

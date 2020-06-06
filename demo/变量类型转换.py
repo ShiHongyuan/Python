@@ -29,4 +29,20 @@ print(bool(1.0))  # True
 print(bool(0))  # False
 print(bool(''))  # False
 
+############################ 其他类型和字符数组（bytes）的转换
+import struct
+# int转bytes
+struct.pack('>I', 10240099)  # b'\x00\x9c@c' pack的第一个参数是处理指令，'>I'的意思是：>表示字节顺序是big-endian，也就是网络序，I表示4字节无符号整数。
+# bytes转int
+struct.unpack('>IH', b'\xf0\xf0\xf0\xf0\x80\x80')  # (4042322160, 32896)  >IH说明：后面的bytes依次变为I：4字节无符号整数和H：2字节无符号整数。
 
+# str与bytes：encode、decode
+
+
+############################### 编码与字符
+# 随机int转字符
+import random
+chr(random.randint(65, 90))
+
+# 字符转int
+ord('a')
