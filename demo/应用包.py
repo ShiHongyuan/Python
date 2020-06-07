@@ -30,6 +30,6 @@ str = data.decode('euc-jp')
 print(str)  # 最新の主要ニュース
 
 
-# 异步IO情况下，用协程：asyncio
+# 异步IO情况下，用协程：asyncio（内置的，不用下载安装）
 
-# 在Web服务器上，由于HTTP连接就是IO操作，因此可以用单线程+coroutine实现多用户的高并发支持：aiohttp
+# 在Web服务器上，由于HTTP连接就是IO操作，因此可以用单线程+coroutine实现多用户的高并发支持：aiohttp（pip install aiohttp）

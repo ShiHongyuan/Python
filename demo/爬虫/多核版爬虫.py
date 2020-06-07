@@ -5,7 +5,7 @@ from multiprocessing import Process,Queue
 from multiprocessing.queues import Empty
 from urllib.request import urlretrieve
 
-
+# 配置日志
 logging.basicConfig(level=logging.ERROR,filename='failed_img.log')
 
 # 抓取地址
@@ -139,7 +139,7 @@ def again_pro(badq):
 def again_download(badq):
 
     while True:
-        c = badq.get(True)
+        c = badq.get(True)    #  block=True，如果没有数据，被阻塞，直到拿到数据
         name = os.path.split(c)[1]
         # 尝试重复下载5次，如果5次均下载失败，记录到错误日志中
         for x in range(5):
