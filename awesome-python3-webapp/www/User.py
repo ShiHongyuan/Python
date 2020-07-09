@@ -8,7 +8,8 @@ users表的对象模型User
 '''
 # import www.orm
 import logging; logging.basicConfig(level=logging.INFO)
-from www.orm import Model, StringField, IntegerField, create_pool
+# 飘红不管他，在同一个包下可以直接引用，不用加包名，也能找到
+from orm import Model, StringField, IntegerField, create_pool
 import asyncio
 
 
@@ -40,7 +41,7 @@ if  __name__ == '__main__':
     loop.run_until_complete(user.update())
     loop.run_until_complete(user.remove())
     users = loop.run_until_complete(User.findAll())
-    # logging.info(users)
+    logging.info(users)
     for u in users:
         logging.info(u)
     # run_forever必须放在最后面才生效
